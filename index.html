@@ -4,29 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title> Abdulrahman - Personal Website</title>
+    <title>Abdulrahman - Personal Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-background bg-[#090c0d] text-white font-inter">
     <header class="fixed w-full bg-card/80 backdrop-blur-sm z-50 border-b border-border">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-primary">عبدالرحمن</h1>
+            
+            <!-- القائمة على الأجهزة الصغيرة (تظهر عند النقر على الأيقونة) -->
+            <div class="md:hidden flex items-center space-x-4">
+                <button id="menuButton" class="text-primary">☰</button>
+            </div>
+    
+            <!-- القائمة التي تظهر في الشاشات الكبيرة -->
             <div class="hidden md:flex space-x-6">
                 <a href="#achievements" class="hover:text-primary transition-colors">شهاداتي</a>
                 <a href="#projects" class="hover:text-primary transition-colors">مشاركاتي</a>
-                <a href="#social" class="hover:text-primary transition-colors">تواصل</a>               
+                <a href="#social" class="hover:text-primary transition-colors">تواصل</a>
                 <a href="#bio" class="hover:text-primary transition-colors">سيرتي</a>
             </div>
         </nav>
+    
+        <!-- القائمة المنسدلة على الجوال -->
+        <div id="menu" class="md:hidden hidden bg-card/80 backdrop-blur-sm text-center">
+            <a href="#achievements" class="block py-2 px-4 hover:text-primary transition-colors menu-item">شهاداتي</a>
+            <a href="#projects" class="block py-2 px-4 hover:text-primary transition-colors menu-item">مشاركاتي</a>
+            <a href="#social" class="block py-2 px-4 hover:text-primary transition-colors menu-item">تواصل</a>
+            <a href="#bio" class="block py-2 px-4 hover:text-primary transition-colors menu-item">سيرتي</a>
+        </div>
     </header>
+
+    <script>
+        // هذا الكود لجعل القائمة المنسدلة تعمل على الجوال
+        const menuButton = document.getElementById('menuButton');
+        const menu = document.getElementById('menu');
+        const menuItems = document.querySelectorAll('.menu-item');
+    
+        // عند النقر على زر القائمة، يتم عرض/إخفاء القائمة
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    
+        // عند النقر على أي عنصر من القائمة، يتم إخفاء القائمة
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
 
     <main class="pt-20">
         <section id="achievements" class="py-20 bg-card">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-10 text-center"> شهاداتي</h2>
-                <div class="grid md:grid-cols-3 gap-8">
+                <h2 class="text-3xl sm:text-2xl font-bold mb-10 text-center">شهاداتي</h2>
+                <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-8">
                     <div class="p-6 bg-secondary rounded-lg transition-transform hover:scale-105">
-                        <h3 class="text-xl font-bold mb-3"> الهاكر الأبيض </h3>
+                        <h3 class="text-xl font-bold mb-3">الهاكر الأبيض</h3>
                         <p class="mb-4">PT Certificate of Completion - White Hat Hacker</p>
                         <img src="https://i.postimg.cc/bvJrP03X/Positive-camp.png" alt="PT Certificate" class="w-full h-50 object-cover rounded-lg shadow-lg">
                     </div>
@@ -44,10 +80,10 @@
             </div>
         </section>
 
-        <section id="projects" class="py-40" dir="rlt">
+        <section id="projects" class="py-40" dir="rtl">
             <div class="container mx-auto px-8">
-                <h2 class="text-3xl font-bold mb-10 text-center">مشاركاتي</h2>
-                <div class="grid md:grid-cols-2 gap-8">
+                <h2 class="text-3xl sm:text-2xl font-bold mb-10 text-center">مشاركاتي</h2>
+                <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-8">
                     <div class="bg-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
                         <img src="https://i.postimg.cc/T3S04Npy/FC7-A5559-FF73-418-C-AFAE-D074-AF911-E63.png" alt="Project 1" class="w-full h-48 object-cover rounded-lg mb-4">
                         <h3 class="text-xl font-bold mb-2">معرض البلاك هات</h3>
@@ -66,7 +102,7 @@
 
         <section id="social" class="py-20 bg-card">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-10 text-center">: تواصل معي عبر</h2>
+                <h2 class="text-3xl sm:text-2xl font-bold mb-10 text-center">: تواصل معي عبر</h2>
                 <div class="flex justify-center space-x-8">
                     <a href="https://www.tiktok.com/@aqz_82" target="_blank" class="p-4 bg-secondary rounded-full hover:bg-primary hover:text-white transition-colors">Tiktok</a>
                     <a href="https://www.linkedin.com/in/abdulrahman-al-qahtani-5b0aa2305" target="_blank" class="p-4 bg-secondary rounded-full hover:bg-primary hover:text-white transition-colors">LinkedIn</a>
@@ -77,8 +113,8 @@
 
         <section id="blackevent" class="py-20 bg-card">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-10 text-center">: معرض البلاك هات</h2>
-                <div class="grid md:grid-cols-3 gap-8">
+                <h2 class="text-3xl sm:text-2xl font-bold mb-10 text-center">: معرض البلاك هات</h2>
+                <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-8">
                     <div class="p-6 bg-secondary rounded-lg transition-transform hover:scale-105">
                         <p class="mb-4">Day 1</p>
                         <img src="https://i.postimg.cc/13pfNMLx/6024004001772717599-121.jpg" alt="PT Certificate" class="w-full h-50 object-cover rounded-lg shadow-lg">
@@ -97,8 +133,8 @@
 
         <section id="ptcamp" class="py-20 bg-card">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-10 text-center">: معسكر الأمن السبراني</h2>
-                <div class="grid md:grid-cols-3 gap-8">
+                <h2 class="text-3xl sm:text-2xl font-bold mb-10 text-center">: معسكر الأمن السبراني</h2>
+                <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-8">
                     <div class="p-6 bg-secondary rounded-lg transition-transform hover:scale-105">
                         <p class="mb-4"></p>
                         <img src="https://i.postimg.cc/zf8SLy2j/175-samartsevanton.jpg" alt="PT Certificate" class="w-full h-50 object-cover rounded-lg shadow-lg">
@@ -114,42 +150,14 @@
                 </div>
             </div>
         </section>
-    </section>
-
-    <main class="pt-20">
-        <section id="ptcamp1" class="py-20 bg-card">
-            <div class="container mx-auto px-4">
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="p-6 bg-secondary rounded-lg transition-transform hover:scale-105">
-                        
-                        <p class="mb-4"></p>
-                        <img src="https://i.postimg.cc/cJF1Qzhz/284samartsevanton.jpg" alt="PT Certificate" class="w-full h-50 object-cover rounded-lg shadow-lg">
-                    </div>
-                    
-                    <div class="p-6 bg-secondary rounded-lg transition-transform hover:scale-105">
-                        
-                        <p class="mb-4"></p>
-                        <img src="https://i.postimg.cc/K8r8YjMx/126samartsevanton.jpg" alt="Imam mohammed ibn saud - Exit-exam Certificate" class="w-full h-50 object-cover rounded-lg shadow-lg">
-                    </div>
-                    <div class="p-6 bg-secondary rounded-lg transition-transform hover:scale-105">
-                        
-                        <p class="mb-4"></p>
-                        <img src="https://i.postimg.cc/1tMWRG9w/207-samartsevanton.jpg" alt="" class="w-full h-50 object-cover rounded-lg shadow-lg">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
 
         <section id="bio" class="py-20 bg-card" dir="rtl">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center gap-8">
                     <img src="https://i.postimg.cc/1zFqbhBn/camp.jpg" alt="عبدالرحمن" class="w-64 h-64 rounded-full object-cover">
                     <div>
-                        <h2 class="text-3xl font-bold mb-6">عبدالرحمن</h2>
-                        <p class="mb-4"> انا, عبدالرحمن طالب بجامعة الامام محمد ابن سعود الإسلامية متخصص بالأمن السيبراني، مهتم في اختبار الاختراق وأتمتع بمهارات في البرمجة باستخدام بايثون، HTML، وCSS. لدي اهتمام كبير بالبحث الجنائي الرقمي وأسعى دائمًا للتميز الأكاديمي حيث أحقق معدلاً عالياً في الجامعة.</p>
+                        <h2 class="text-3xl sm:text-2xl font-bold mb-6">عبدالرحمن</h2>
+                        <p class="mb-4">أنا عبدالرحمن طالب بجامعة الإمام محمد بن سعود الإسلامية متخصص بالأمن السيبراني، مهتم في اختبار الاختراق وأتمتع بمهارات في البرمجة باستخدام بايثون، HTML، وCSS. لدي اهتمام كبير بالبحث الجنائي الرقمي وأسعى دائمًا للتميز الأكاديمي حيث أحقق معدلاً عالياً في الجامعة.</p>
                     </div>
                 </div>
             </div>
